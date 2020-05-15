@@ -19,4 +19,4 @@ ENV DJANGO_SETTINGS_MODULE=jokesite.settings
 # Call collectstatic (customize the following line with the minimal environment variables needed for manage.py to run):
 RUN DATABASE_URL='' python manage.py collectstatic --noinput
 
-CMD [ "gunicorn",  "jokesite.wsgi:application" "--bind 0.0.0.0:8080"]
+CMD [ "gunicorn",  "jokesite.wsgi:application", "--bind 0.0.0.0:8080" ]
