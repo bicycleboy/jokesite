@@ -27,7 +27,7 @@ SECRET_KEY = 'b29qZGZvcWV3ZGFvbmZqZHNmCg=='
 #else:
 #    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
 #    DEBUG = False
-
+DEBUG=False
 
 ALLOWED_HOSTS = ['*']
 
