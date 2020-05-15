@@ -4,16 +4,12 @@ metadata:
   name: jokesite
   labels: 
     app: jokesite 
-  annotations:
-    description: Exposes and load balances the application pods
 spec:
   ports:
-    - name: 8080-tcp
-      port: 8080
-      protocol: TCP
-      targetPort: 8080
+  - name: 8080-tcp
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
   selector:
     app: jokesite
     deploymentconfig: jokesite
-  type: ClusterIP
-  sessionAffinity: None
