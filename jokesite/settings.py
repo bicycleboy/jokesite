@@ -22,12 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'b29qZGZvcThxMzhhc2RoamV3ZGFvbmZqZHNmCg=='
 DEBUG = True
-check = "Using development secret key"
+check = "settings.py: Using development secret key"
 if os.getenv('DJANGO_SECRET_KEY'):
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
     DEBUG = False
-    check = "Using environment secret key"
-print(check)
+    check = "settings.py: Using environment secret key"
+
 
 ALLOWED_HOSTS = ['*']
 
@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'jokesite.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-if os.getenv('DATABASE_ENGINE') == "postgresl":
+if os.getenv('DATABASE_ENGINE') == "postgresql":
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -89,6 +89,7 @@ if os.getenv('DATABASE_ENGINE') == "postgresl":
             'HOST': os.getenv('DATABASE_SERVICE_NAME'),
         },
     }
+    check= check + " and postgres"
 else:
     DATABASES = {
         'default': {
@@ -96,6 +97,7 @@ else:
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
+    check= check + " and sqlite3"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -143,3 +145,5 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_PORT = 587
 EMAIL_USE_TLS = False
 DEFAULT_FROM_EMAIL = 'chris-n@bigpond.com'
+
+print(check)

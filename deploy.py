@@ -65,11 +65,14 @@ print(cmd)
 if os.system(cmd): sys.exit(1)
 
 if args.source:
+    # from git 
     #cmd = "oc new-app https://github.com/bicycleboy/jokesite"
+    # from local source
     cmd = "oc new app ./jokesite"
     print(cmd)
     if os.system(cmd): sys.exit(1)
 else:
+    # assumes files in ./yaml refer to pre built container on Quay (which has a rebuild trigger on push to git)
     cmd = 'oc apply -f yaml'
     print(cmd)
     if os.system(cmd): sys.exit(1)
