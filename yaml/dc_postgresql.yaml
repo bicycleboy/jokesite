@@ -76,7 +76,7 @@ spec:
                   name: jokesite
                   key: database-password
             - name: POSTGRESQL_DATABASE
-              value: default
+              value: jokedb
           ports:
             - containerPort: 5432
               protocol: TCP

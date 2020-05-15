@@ -168,3 +168,22 @@ data:
   key1: c3VwZXJzZWNyZXQ=
   key2: dG9wc2VjcmV0
 type: Opaque
+
+kind: Secret
+apiVersion: v1
+metadata:
+  name: django-psql-example
+  namespace: django-ex
+  selfLink: /api/v1/namespaces/django-ex/secrets/django-psql-example
+  uid: 07597662-94a9-11ea-b380-02e5d704b7db
+  resourceVersion: '50923211'
+  creationTimestamp: '2020-05-12T23:33:48Z'
+  labels:
+    app: django-psql-example
+    template: django-psql-example
+    template.openshift.io/template-instance-owner: 073b0c5a-94a9-11ea-9257-0a580a82000a
+data:
+  database-password: cjFzTXFPR2dGQ0dKeWxMaQ==
+  database-user: ZGphbmdv
+  django-secret-key: TkptWHpIM2RlX3Mydk55MEdaa014N0hBbWFibUZGeWNicFpJbGpfQkZBeGdWeHNjRkE=
+type: Opaque
