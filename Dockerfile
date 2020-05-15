@@ -14,7 +14,7 @@ ENV PORT 8080
 EXPOSE 8080
 
 # Add any static environment variables needed by Django or your settings file here:
-ENV DJANGO_SETTINGS_MODULE=jokesite.settings
+ENV SECRET_KEY 'b29qZGZvcThxMzkzZGZnc2ZkZ2pkc2YK'
 
 # Call collectstatic (customize the following line with the minimal environment variables needed for manage.py to run):
 RUN DATABASE_URL='' python manage.py collectstatic --noinput
