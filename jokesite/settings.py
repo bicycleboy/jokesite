@@ -21,12 +21,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'b29qZGZvcThxMzhhc2RoamV3ZGFvbmZqZHNmCg=='
-if os.getenv('USER') == "chris":
-    DEBUG = True
-else:
+DEBUG = True
+check = "Using development secret key"
+if os.getenv('DJANGO_SECRET_KEY'):
     SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
     DEBUG = False
-
+    check = "Using environment secret key"
+print(check)
 
 ALLOWED_HOSTS = ['*']
 
