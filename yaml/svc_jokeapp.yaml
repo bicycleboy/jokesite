@@ -9,6 +9,5 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
+    app: jokesite
     deploymentconfig: jokesite
-status:
-  loadBalancer: {}
