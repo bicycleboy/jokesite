@@ -4,6 +4,7 @@ import sys
 import argparse
 import base64
 import os
+import time
 
 def randomPassword(length):
     randomSource = string.ascii_letters + string.digits + string.punctuation
@@ -76,6 +77,8 @@ else:
     cmd = 'oc apply -f yaml'
     print(cmd)
     if os.system(cmd): sys.exit(1)
-    cmd = 'oc expose svc/' + project_name
-    print(cmd)
-    if os.system(cmd): sys.exit(1)
+
+
+print(cmd)
+cmd = 'oc expose svc/' + project_name
+if os.system(cmd): sys.exit(1)

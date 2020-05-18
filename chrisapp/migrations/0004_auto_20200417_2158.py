@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chrisapp', '0003_auto_20200417_2155'),
+        ("chrisapp", "0003_auto_20200417_2155"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='joke',
-            name='punchline_text',
-            field=models.CharField(default='', max_length=200),
+            model_name="joke",
+            name="punchline_text",
+            field=models.CharField(default="", max_length=200),
         ),
     ]

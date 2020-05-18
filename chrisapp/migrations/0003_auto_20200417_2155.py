@@ -6,21 +6,17 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('chrisapp', '0002_punchline'),
+        ("chrisapp", "0002_punchline"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='joke',
-            name='likes',
-            field=models.IntegerField(default=0),
+            model_name="joke", name="likes", field=models.IntegerField(default=0),
         ),
         migrations.AddField(
-            model_name='joke',
-            name='punchline_text',
+            model_name="joke",
+            name="punchline_text",
             field=models.CharField(default=None, max_length=200),
         ),
-        migrations.DeleteModel(
-            name='Punchline',
-        ),
+        migrations.DeleteModel(name="Punchline",),
     ]

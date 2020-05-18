@@ -7,6 +7,6 @@ class Joke(models.Model):
     joke_text = models.CharField(max_length=200)
     punchline_text = models.CharField(max_length=200)
     likes = models.IntegerField(default=0)
+
     def __str__(self):
         return self.joke_text
-
