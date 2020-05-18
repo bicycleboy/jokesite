@@ -17,4 +17,4 @@ EXPOSE 8080
 # Call collectstatic (customize the following line with the minimal environment variables needed for manage.py to run):
 RUN DATABASE_URL='' python manage.py collectstatic --noinput
 
-CMD [ "CMD [ "/opt/app-root/src/start-application.sh", "8080" ]
+CMD [ "/opt/app-root/src/start-application.sh", "8080" ]
