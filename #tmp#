@@ -282,3 +282,38 @@ spec:
   sessionAffinity: None
 status:
   loadBalancer: {}
+
+
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: django-psql-example
+  namespace: django-ex
+  selfLink: /apis/route.openshift.io/v1/namespaces/django-ex/routes/django-psql-example
+  uid: e083170a-98ff-11ea-b279-0a580a810037
+  resourceVersion: '55132868'
+  creationTimestamp: '2020-05-18T12:05:33Z'
+  labels:
+    app: django-psql-example
+    template: django-psql-example
+    template.openshift.io/template-instance-owner: e05eee14-98ff-11ea-9257-0a580a82000a
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: django-psql-example-django-ex.apps.ocp-na2.prod.nextcle.com
+  subdomain: ''
+  to:
+    kind: Service
+    name: django-psql-example
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: django-psql-example-django-ex.apps.ocp-na2.prod.nextcle.com
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2020-05-18T12:05:34Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: apps.ocp-na2.prod.nextcle.com

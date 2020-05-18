@@ -1,0 +1,67 @@
+- model: chrisapp.joke
+  pk: 1
+  fields:
+    joke_text: What sits at the bottom of the sea and shakes?
+    punchline_text: A nervous wreck!
+    likes: 0
+- model: chrisapp.joke
+  pk: 2
+  fields:
+    joke_text: What is brown and sticky?
+    punchline_text: A stick!
+    likes: 0
+- model: chrisapp.joke
+  pk: 3
+  fields:
+    joke_text: What do you call a man walking through the woods in Autumn?
+    punchline_text: Russell!
+    likes: 0
+- model: chrisapp.joke
+  pk: 4
+  fields:
+    joke_text: What do you call a girl who throws her bills in the fire?
+    punchline_text: Bernadette!
+    likes: 3
+- model: chrisapp.joke
+  pk: 6
+  fields:
+    joke_text: How did the baker get electrocuted?
+    punchline_text: He stood on a bun and currants ran up his leg
+    likes: 0
+- model: chrisapp.joke
+  pk: 7
+  fields:
+    joke_text: What do you call a man standing by a hole with a spade?
+    punchline_text: Doug!
+    likes: 0
+- model: chrisapp.joke
+  pk: 8
+  fields:
+    joke_text: Why does Santa have a garden?
+    punchline_text: So he can ho ho ho!
+    likes: 1
+- model: chrisapp.joke
+  pk: 9
+  fields:
+    joke_text: What do you call a man standing by a hole without a spade?
+    punchline_text: Douglass!
+    likes: 0
+- model: chrisapp.joke
+  pk: 10
+  fields:
+    joke_text: What do you call a girl balancing a tray of beer on her head?
+    punchline_text: Beatrix!
+    likes: 0
+- model: chrisapp.joke
+  pk: 16
+  fields:
+    joke_text: What do you call a girl balancing a tray of beer on her head while
+      playing pool?
+    punchline_text: Beatrix Potter!
+    likes: 0
+- model: chrisapp.joke
+  pk: 17
+  fields:
+    joke_text: Did you hear about the monkeys who shared an Amazon account?
+    punchline_text: They were Prime mates!
+    likes: 0

@@ -1,0 +1,13 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: jokesite
+  labels:
+    app: jokesite
+spec:
+  subdomain: ''
+  to:
+    kind: Service
+    name: django-psql-example
+    weight: 100
+  wildcardPolicy: None
