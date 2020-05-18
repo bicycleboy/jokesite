@@ -77,8 +77,3 @@ else:
     cmd = 'oc apply -f yaml'
     print(cmd)
     if os.system(cmd): sys.exit(1)
-
-
-print(cmd)
-cmd = 'oc expose svc/' + project_name
-if os.system(cmd): sys.exit(1)
