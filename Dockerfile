@@ -3,7 +3,7 @@ LABEL description="Jokesite"
 
 USER root
 RUN mkdir -p /opt/app-root/src && chown -R 1001:0 /opt/app-root/src
-RUN yum install bind-utils
+RUN yum -y install bind-utils
 USER 1001 
 WORKDIR /opt/app-root/src
 COPY requirements.txt ./
