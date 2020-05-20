@@ -65,7 +65,7 @@ spec:
       initContainers:
         - name: jokesite-init-postgresql
           image: busybox
-          command: ['sh', '-c', 'until nslookup postgresql; do echo waiting for postgresql; sleep 4; done;']     
+          command: ['sh', '-c', 'sleep 4']     
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
