@@ -24,11 +24,12 @@ def randomPassword(length):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Deploy Jokesite to OpenSHift')
     parser.add_argument('ProjectName', metavar='projectname', type=str, help='The name of the OpenShift Project')
-    parser.add_argument('APIEndpoint', metavar='apiendpoint', type=str, help='The name of the OpenShift API Endpoint')
     parser.add_argument('-s', '--source', action="store_true", help='Build from local source (default is Quay')
+    parser.add_argument('-u', '--username', metavar='username', required='-p' in sys.argv, help='OpenShift username')
+    parser.add_argument('-p', '--password', metavar='password', required='-u' in sys.argv, help='OpenShift password')
+    parser.add_argument('APIEndpoint', metavar='apiendpoint', type=str, help='The name of the OpenShift API Endpoint')
     args = parser.parse_args()
     project_name = args.ProjectName
-    api_endpoint = args.APIEndpoint
 else:
     sys.exit(1)
 
@@ -37,6 +38,7 @@ encodedBytes = base64.b64encode(data.encode("utf-8"))
 database_password = str(encodedBytes, "utf-8")
 data = randomPassword(8)
 encodedBytes = base64.b64encode(data.encode("utf-8"))
+# may create user name with invalide characters?
 database_user = str(encodedBytes, "utf-8")
 data = randomPassword(20)
 encodedBytes = base64.b64encode(data.encode("utf-8"))
@@ -59,9 +61,13 @@ data:\n\
 type: Opaque\n\
 ')
 secretFile.close()
+ 
+if args.username:
+    cmd = "oc login -u " + args.username + " -p " + args.password + " " + args.APIEndpoint
+    print(cmd)
+    if os.system(cmd): sys.exit(1)
 
-
-cmd = "oc new-project " + project_name
+cmd = "oc new-project " + project_name 
 print(cmd)
 if os.system(cmd): sys.exit(1)
 

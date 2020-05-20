@@ -11,7 +11,7 @@ if [ -z ${DATABASE_SERVICE_NAME} ] ; then
     export DJANGO_SETTINGS_MODULE=jokesite.devsettings
     echo "start-application.sh: Using development settings"
 else 
-    # Could not get init container to work
+    # Probs not required if init container working
     for i in {1..5}; do
         nslookup ${DATABASE_SERVICE_NAME} | grep "No answer"
         if [ $? -eq 1 ]; then
@@ -22,6 +22,7 @@ else
             sleep 2
         fi
     done
+    sleep 3
     echo "start-application.sh: Creating Database"
     python3 "manage.py" "migrate"
     echo "start-application.sh: Populating Database"

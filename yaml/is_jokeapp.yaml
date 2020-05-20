@@ -2,5 +2,7 @@ kind: ImageStream
 apiVersion: image.openshift.io/v1
 metadata:
   name: jokesite
+  labels:
+    app: jokesite
 spec:
   dockerImageRepository: quay.io/bicycleboy/jokesite
