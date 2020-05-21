@@ -317,3 +317,69 @@ status:
           lastTransitionTime: '2020-05-18T12:05:34Z'
       wildcardPolicy: None
       routerCanonicalHostname: apps.ocp-na2.prod.nextcle.com
+
+
+      ** Good Route from training
+
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: myapp
+  namespace: cneedham-redhat-com-app-config
+  selfLink: >-
+    /apis/route.openshift.io/v1/namespaces/cneedham-redhat-com-app-config/routes/myapp
+  uid: 2a6e872d-9a99-11ea-b3a6-0a580a810005
+  resourceVersion: '56729188'
+  creationTimestamp: '2020-05-20T12:55:22Z'
+  labels:
+    app: myapp
+  annotations:
+    openshift.io/host.generated: 'true'
+spec:
+  host: myapp-cneedham-redhat-com-app-config.apps.ocp-na2.prod.nextcle.com
+  subdomain: ''
+  to:
+    kind: Service
+    name: myapp
+    weight: 100
+  port:
+    targetPort: 8080-tcp
+  wildcardPolicy: None
+status:
+  ingress:
+    - host: myapp-cneedham-redhat-com-app-config.apps.ocp-na2.prod.nextcle.com
+      routerName: default
+      conditions:
+        - type: Admitted
+          status: 'True'
+          lastTransitionTime: '2020-05-20T12:55:22Z'
+      wildcardPolicy: None
+      routerCanonicalHostname: apps.ocp-na2.prod.nextcle.com
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: myapp
+  namespace: cneedham-redhat-com-app-config
+  selfLink: /api/v1/namespaces/cneedham-redhat-com-app-config/services/myapp
+  uid: be225281-9a98-11ea-a9b1-02e5d704b7db
+  resourceVersion: '56727465'
+  creationTimestamp: '2020-05-20T12:52:20Z'
+  labels:
+    app: myapp
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: myapp
+    deploymentconfig: myapp
+  clusterIP: 172.30.85.248
+  type: ClusterIP
+  sessionAffinity: None
+status:
+  loadBalancer: {}

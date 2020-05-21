@@ -10,4 +10,7 @@ spec:
     kind: Service
     name: jokesite
     weight: 100
+  port:
+    targetPort: 8080-tcp
   wildcardPolicy: None
+  

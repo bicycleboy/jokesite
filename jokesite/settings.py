@@ -21,104 +21,119 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "b29qZGZvcThxMzhhc2RoamV3ZGFvbmZqZHNmCg=="
+SECRET_KEY = 'b29qZGZvcThxMzhhc2RoamV3ZGFvbmZqZHNmCg=='
 DEBUG = True
-check = "settings.py: Using development secret key"
-if os.getenv("DJANGO_SECRET_KEY"):
-    SECRET_KEY = os.getenv("DJANGO_SECRET_KEY")
-    DEBUG = False
-    check = "settings.py: Using environment secret key"
+check = "settings.py: Using development secret key "
+if os.getenv('DJANGO_SECRET_KEY'):
+    check = "settings.py: Using production secret key "
+    SECRET_KEY = os.getenv('DJANGO_SECRET_KEY')
+    DEBUG=False
+
+if os.getenv('DJANGO_DEBUG'):
+    DJANGO_DEBUG = os.getenv('DJANGO_DEBUG')
+    if DJANGO_DEBUG == "True":
+        DEBUG=True   
+    else:
+        DEBUG=False        
+    
+check = check + "DEBUG=" + str(DEBUG)
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
-    "chrisapp",
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'chrisapp',
 ]
 
 MIDDLEWARE = [
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
-    "django.middleware.csrf.CsrfViewMiddleware",
-    "django.contrib.auth.middleware.AuthenticationMiddleware",
-    "django.contrib.messages.middleware.MessageMiddleware",
-    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = "jokesite.urls"
+ROOT_URLCONF = 'jokesite.urls'
 
 TEMPLATES = [
     {
-        "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
-        "APP_DIRS": True,
-        "OPTIONS": {
-            "context_processors": [
-                "django.template.context_processors.debug",
-                "django.template.context_processors.request",
-                "django.contrib.auth.context_processors.auth",
-                "django.contrib.messages.context_processors.messages",
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.debug',
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
 
-WSGI_APPLICATION = "jokesite.wsgi.application"
+WSGI_APPLICATION = 'jokesite.wsgi.application'
 
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 
-if os.getenv("DATABASE_ENGINE") == "postgresql":
+if os.getenv('DATABASE_ENGINE') == "postgresql":
     DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql_psycopg2",
-            "NAME": os.getenv("DATABASE_NAME"),
-            "USER": os.getenv("DATABASE_USER"),
-            "PASSWORD": os.getenv("DATABASE_PASSWORD"),
-            "HOST": os.getenv("DATABASE_SERVICE_NAME"),
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': os.getenv('DATABASE_NAME'),
+            'USER': os.getenv('DATABASE_USER'),
+            'PASSWORD': os.getenv('DATABASE_PASSWORD'),
+            'HOST': os.getenv('DATABASE_SERVICE_NAME'),
         },
     }
-    check = check + " and postgres"
+    check= check + " and postgres"
 else:
     DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-    check = check + " and sqlite3"
+    check= check + " and sqlite3"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
 ]
 
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = "Australia/Canberra"
+TIME_ZONE = 'Australia/Canberra'
 
 USE_I18N = True
 
@@ -130,15 +145,24 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = "/static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Email Server Config
-EMAIL_HOST = "smtp.telstra.com"
-EMAIL_HOST_PASSWORD = ""
+EMAIL_HOST = 'smtp.telstra.com'
+if os.getenv('EMAIL_HOST'):
+    EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_HOST_PASSWORD = ''
+if os.getenv('EMAIL_HOST_PASSWORD'):
+    EMAIL_HOST = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
+if os.getenv('EMAIL_PORT'):
+    EMAIL_HOST = os.getenv('EMAIL_PORT')
+DEFAULT_FROM_EMAIL = 'noreply@bigpond.com'
+if os.getenv('DEFAULT_FROM_EMAIL'):
+    EMAIL_HOST = os.getenv('DEFAULT_FROM_EMAIL')
 EMAIL_USE_TLS = False
-DEFAULT_FROM_EMAIL = "chris-n@bigpond.com"
 
+check = check + " EMAIL_HOST=" + EMAIL_HOST + " DEFAULT_FROM_EMAIL=" + DEFAULT_FROM_EMAIL
 print(check)

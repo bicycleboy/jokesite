@@ -1,6 +1,8 @@
 kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
+  annotations:
+    description: Defines how to deploy the joke application
   name: jokesite
   labels:
     app: jokesite
@@ -28,6 +30,7 @@ spec:
       creationTimestamp: null
       labels:
         deploymentconfig: jokesite
+        name: jokesite
     spec:
       containers:
         - name: jokesite
