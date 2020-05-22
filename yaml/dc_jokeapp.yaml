@@ -24,6 +24,7 @@ spec:
   revisionHistoryLimit: 10
   test: false
   selector:
+    name: jokesite
     deploymentconfig: jokesite
   template:
     metadata:
@@ -68,7 +69,7 @@ spec:
       initContainers:
         - name: jokesite-init-postgresql
           image: busybox
-          command: ['sh', '-c', 'sleep 6']     
+          command: ['sh', '-c', 'sleep 10']     
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst

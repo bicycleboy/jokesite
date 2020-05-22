@@ -22,7 +22,7 @@ else
             sleep 2
         fi
     done
-    sleep 3
+    sleep 5
     echo "start-application.sh: Creating Database"
     python3 "manage.py" "migrate"
     echo "start-application.sh: Populating Database"
